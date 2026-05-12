@@ -9,4 +9,5 @@ public class AudioBank : ScriptableObject
 
     [Header("SFX")]
     public AudioClip buttonClick;
+    public AudioClip footstep;
 }

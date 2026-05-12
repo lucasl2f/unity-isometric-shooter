@@ -36,4 +36,5 @@ public class SoundController
     public void PlayMainMenuMusic() => PlayBGM(_audioBank.mainMenuMusic);
     public void PlayGameplayMusic() => PlayBGM(_audioBank.gameplayMusic);
     public void PlayButtonClick() => PlaySFX(_audioBank.buttonClick);
+    public void PlayFootstep() => PlaySFX(_audioBank.footstep);
 }

@@ -4,11 +4,15 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class App : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject playerAsset;
+
     private UIDocument _rootUIDocument;
 
     private UIController _uiController;
     private GameController _gameController;
     private SoundController _soundController;
+    private PlayerController _playerController;
 
     private void Awake()
     {
@@ -31,6 +35,13 @@ public class App : MonoBehaviour
         _uiController.OnButtonClicked               += _soundController.PlayButtonClick;
     }
 
+    private void Start()
+    {
+        var player = GameObject.Instantiate(playerAsset);
+        _playerController = player.GetComponent<PlayerController>();
+        _playerController.OnFootstepEvent += _soundController.PlayFootstep;
+    }
+
     private void OnDestroy()
     {
         // Events
@@ -39,5 +50,6 @@ public class App : MonoBehaviour
         _uiController.OnPlayBgmMissionBtnPressed    -= _soundController.PlayGameplayMusic;
         _uiController.OnStopBgmBtnPressed           -= _soundController.StopBGM;
         _uiController.OnButtonClicked               -= _soundController.PlayButtonClick;
+        _playerController.OnFootstepEvent           -= _soundController.PlayFootstep;
     }
 }

@@ -14,6 +14,7 @@ public class UIController
     public UIController(UIDocument uIDocument)
     {
         _root = uIDocument.rootVisualElement;
+        _root.visible = false;
         var startBtn = _root.Q<Button>("start-button");
         startBtn.clicked += () => OnStartButtonPressed?.Invoke();
         startBtn.clicked += () => OnButtonClicked?.Invoke();
